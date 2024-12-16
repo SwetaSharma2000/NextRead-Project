@@ -1,0 +1,136 @@
+body {
+    background-color:#f0f0f0;
+  }
+
+  .container {
+  
+    background: -webkit-linear-gradient(65deg, #a683e3 50%, #e4e9fd 50%);
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px 40px;
+    border-radius: 8px;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-info {
+  display: flex; /* Display the contents horizontally */
+}
+
+.recommendation-info p {
+  margin-right: 20px; /* Add some spacing between the two elements */
+}
+
+.book-details {
+  display: flex;
+}
+
+.book-notes{
+  display:flex;
+}
+
+.summary {
+  flex-grow: 1; /* Allow the summary to take up remaining space */
+  margin-left: 20px;  /* Add some spacing between the summary and the image */
+}
+
+img {
+  width: 200px; /* Set the width of the image */
+}
+
+
+
+
+
+
+
+  
+
+  h1 {
+    font-size: 2.5em;
+   margin-bottom: 20px;
+   color: #444;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #555;
+  }
+
+  #newPostBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:#80669d;
+    color:  #fff;;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  #newPostBtn:hover {
+    background-color: #a881af;
+  }
+  
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .recommendation-info{
+    font-family: Arial, sans-serif; ;
+    color:  #555;
+    font-weight: normal;
+    line-height: 1;
+    font-size: 16px;
+  }
+  
+
+  small {
+    margin-bottom: 20px;
+    color: #555;;
+  }
+
+  p {
+    color: #555;
+  }
+
+
+
+  
+
+.summary {
+    
+    font-family: Arial, sans-serif; /* Specify the font family */
+    font-size: 16px; /* Set the font size */
+    font-weight: normal; /* Set the font weight */
+    line-height: 1.5; /* Set the line height */
+}
+
+
+
+.sort-link {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 8px 16px;
+  background-color:	#1E2952;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sort-link:hover {
+  background-color: #1D428A;
+}
+
+
+
+
+
