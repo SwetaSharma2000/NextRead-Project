@@ -7,7 +7,7 @@ import env from "dotenv";
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const yourAPIKey = process.env.BOOK_API_KEY;
 env.config();
 
