@@ -31,6 +31,7 @@ app.use(express.static("public"));
 app.use(express.json()); 
 app.set('view engine', 'ejs');
 
+console.log("Render assigned PORT:", process.env.PORT);
 
 
 let books=[];
