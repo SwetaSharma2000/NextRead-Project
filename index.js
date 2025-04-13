@@ -10,14 +10,13 @@ env.config();
 const app = express();
 const port = process.env.PORT || 3000;
 const yourAPIKey = process.env.BOOK_API_KEY;
-// env.config();
+
 
 const db = new pg.Client({
     user:process.env.DB_USER,
     host:process.env.DB_HOST ,
     database:process.env.DB_NAME,
     password:process.env.DB_PASSWORD ,
-    // port: 5432,
     port:process.env.DB_PORT,
     ssl: {
      rejectUnauthorized: false, // Required for Render PostgreSQL
