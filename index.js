@@ -5,11 +5,12 @@ import bodyParser from "body-parser";
 import env from "dotenv";
 
 
+env.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 const yourAPIKey = process.env.BOOK_API_KEY;
-env.config();
+// env.config();
 
 const db = new pg.Client({
     user:process.env.DB_USER,
