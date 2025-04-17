@@ -38,7 +38,11 @@ let books=[];
 async function fetchImageUrls(books) {
   const imagePromises = books.map(async (book) => {
       try {
-          const response = await axios.get(`https://openlibrary.org/isbn/${book.isbn}.json`);
+          const response = await axios.get(`https://openlibrary.org/isbn/${book.isbn}.json`,{ 
+            headers: {
+            'User-Agent': 'NextRead-Project/1.0 (sweta15965@gmail.com)',
+           }
+        });
           const imageUrl = `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`;
           return { isbn: book.isbn, imageUrl: imageUrl };
       } catch (error) {
