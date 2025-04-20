@@ -69,39 +69,23 @@ async function updateDatabase(imageUrls) {
 
 
 
-app.get("/update-images", async (req, res) => {
-  try {
-    const result = await db.query("SELECT * FROM books ORDER BY id ASC");
-    const books = result.rows;
-
-    const imageUrls = await fetchImageUrls(books);
-    await updateDatabase(imageUrls);
-
-    res.send("Image URLs updated.");
-  } catch (err) {
-    console.error('Error updating images:', err);
-    res.status(500).send('Error updating images');
-  }
-});
-
-
-// app.get("/", async (req, res) => {
+// app.get("/update-images", async (req, res) => {
 //   try {
-//       const result = await db.query("SELECT * FROM books ORDER BY id ASC");
-//       const books = result.rows;
+//     const result = await db.query("SELECT * FROM books ORDER BY id ASC");
+//     const books = result.rows;
 
-//       const imageUrls = await fetchImageUrls(books);
+//     const imageUrls = await fetchImageUrls(books);
+//     await updateDatabase(imageUrls);
 
-//       await updateDatabase(imageUrls);
-
-//       res.render("index.ejs", {
-//           bookItems: books,
-//       });
+//     res.send("Image URLs updated.");
 //   } catch (err) {
-//       console.error('Error processing request:', err);
-//       res.status(500).send('Internal Server Error');
+//     console.error('Error updating images:', err);
+//     res.status(500).send('Error updating images');
 //   }
 // });
+
+
+
 
 
 
