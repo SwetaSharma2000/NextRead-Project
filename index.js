@@ -58,7 +58,7 @@ async function fetchImageUrls(books) {
 async function updateDatabase(imageUrls) {
   const insertOrUpdatePromises = imageUrls.map(async ({ isbn, imageUrl }) => {
       try {
-          await db.query("INSERT INTO books (isbn, image_url) VALUES ($1, $2) ON CONFLICT (isbn) DO UPDATE SET image_url = EXCLUDED.image_url",
+          await db.query("INSERT INTO bookdata (isbn, image_url) VALUES ($1, $2) ON CONFLICT (isbn) DO UPDATE SET image_url = EXCLUDED.image_url",
               [isbn, imageUrl]);
       } catch (error) {
           console.error(`Error inserting/updating image URL for ISBN ${isbn}:`, error);
@@ -92,7 +92,7 @@ async function updateDatabase(imageUrls) {
 
 app.get("/", async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM books ORDER BY id ASC");
+    const result = await db.query("SELECT * FROM bookdata ORDER BY id ASC");
     const books = result.rows;
 
     res.render("index.ejs", {
@@ -111,12 +111,12 @@ app.post("/Newbooks", async (req, res) => {
   try {
       const { isbn, title,dateRead, recommendation,summary } = req.body;
              // Check if the book already exists in the database
-          const existingBook = await db.query("SELECT * FROM books WHERE isbn = $1", [isbn]);
+          const existingBook = await db.query("SELECT * FROM bookdata WHERE isbn = $1", [isbn]);
           if (existingBook.rows.length > 0) {
             return res.status(400).json({ message: "Book with this ISBN already exists" });
           }
     // Insert the new book data into the database
-      const result = await db.query("INSERT INTO books (isbn,book_title,date_of_reading,recommendation,summary) VALUES ($1, $2, $3, $4, $5)", 
+      const result = await db.query("INSERT INTO bookdata (isbn,book_title,date_of_reading,recommendation,summary) VALUES ($1, $2, $3, $4, $5)", 
           [isbn, title,dateRead, recommendation,summary]);
         //   console.log(result);
           res.redirect("/");
@@ -161,13 +161,13 @@ app.delete("/books/:isbn", async (req, res) => {
       const isbn = req.params.isbn;
       
       // Check if the book exists in the database
-      const existingBook = await db.query("SELECT * FROM books WHERE isbn = $1", [isbn]);
+      const existingBook = await db.query("SELECT * FROM bookdata WHERE isbn = $1", [isbn]);
       if (existingBook.rows.length === 0) {
         return res.status(404).json({ message: "Book with this ISBN not found" });
       }
       
       // Delete the book from the database
-      await db.query("DELETE FROM books WHERE isbn = $1", [isbn]);
+      await db.query("DELETE FROM bookdata WHERE isbn = $1", [isbn]);
       
       res.status(200).json({ message: `Book with ISBN ${isbn} deleted successfully` });
   } catch (error) {
