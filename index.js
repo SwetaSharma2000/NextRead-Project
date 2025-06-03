@@ -196,7 +196,7 @@ async function deleteBook(isbnToDelete) {
 app.get("/books/sortedByRating", async (req, res) => {
   try {
       // Fetch data from the database and sort by rating
-      const result = await db.query("SELECT * FROM books ORDER BY recommendation DESC");
+      const result = await db.query("SELECT * FROM bookdata ORDER BY recommendation DESC");
       const books=result.rows;
       res.render("index.ejs", { bookItems:books });
   } catch (error) {
@@ -208,7 +208,7 @@ app.get("/books/sortedByRating", async (req, res) => {
 app.get("/books/sortedByRecency", async (req, res) => {
   try {
       // Fetch data from the database and sort by recency
-      const result = await db.query("SELECT * FROM books ORDER BY date_of_reading DESC");
+      const result = await db.query("SELECT * FROM bookdata ORDER BY date_of_reading DESC");
       const books=result.rows;
       res.render("index.ejs", { bookItems: books });
   } catch (error) {
