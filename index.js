@@ -21,7 +21,8 @@ const db = new pg.Client({
     ssl: {
      rejectUnauthorized: false, // Required for Render PostgreSQL
         },
-        family: 4,
+      
+      family: 4,
   });
 
   db.connect();
